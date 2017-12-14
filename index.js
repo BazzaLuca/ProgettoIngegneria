@@ -75,7 +75,6 @@ questions_collection.find(function(err, questions) {
 	// dove n è il numero di topics nel database
 	// n[i].t è l'i-esimo topic 
 	// n[i].c è il numero di volte che è stata cliccata una domanda con topic n[i].t
-	console.log(arrayTopics);
 
 });
 
@@ -100,7 +99,7 @@ app.listen((process.env.PORT || 80));
 
 app.get('/search', function(req, res) {
 	var clickedTopic = req.body.value;
-	console.log(clickedTopic);
+	console.log("CLICKED TOPIC = " + clickedTopic);
 	res.end(clickedTopic);
 });
 
