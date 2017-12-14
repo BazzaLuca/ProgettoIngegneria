@@ -45,7 +45,7 @@ questions_collection.find(function(err, questions) {
     });*/
 
 	// ritorna le questions
-	console.log(questions);
+	//console.log(questions);
 
 	// Prendo le domande e aggiorno l'array di Topics
 	for (var i = 0; i < questions.length; i++) {
@@ -91,14 +91,14 @@ app.get('/', function(req, res) {
             res.end(data);
         }
 	);
-	console.log(arrayTopics);
+	//console.log(arrayTopics);
 });
 
 app.listen((process.env.PORT || 80));
 
 
 app.get('/search', function(req, res) {
-	var clickedTopic = req.body.topic;
+	var clickedTopic = req.body.name;
 	console.log("CLICKED TOPIC = " + clickedTopic);
 	res.end(clickedTopic);
 });
