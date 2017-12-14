@@ -97,7 +97,19 @@ app.get('/', function(req, res) {
 
 app.get('/search/:topic', function(req, res) {
 	var topicScelto = req.params.topic;
-	res.end(topicScelto);
+	var arrayQuestions = [];
+	questions_collection.find(function(err, questions) {
+		if (err) {
+			console.log(err);
+		}
+		for (var i = 0; i < questions.length; i++) {
+			if (questions[i].topic == topicScelto) {
+				arrayQuestions.push(questions[i]);
+			}
+		}
+		res.end(JSON.stringify(arrayQuestions));
+	});
+	// res.end(topicScelto);
 });
 
 
