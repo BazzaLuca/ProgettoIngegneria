@@ -99,9 +99,8 @@ app.listen((process.env.PORT || 80));
 
 
 app.get('/search', function(req, res) {
-	res.end("ciao");
+	var clickedTopic = req.body.topic;
+	res.end(clickedTopicc);
 });
-
-console.log("ciao");
 
 
