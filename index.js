@@ -97,10 +97,8 @@ app.get('/', function(req, res) {
 app.listen((process.env.PORT || 80));
 
 
-app.get('/search', function(req, res) {
-	var clickedTopic = req.body.name;
-	console.log("CLICKED TOPIC = " + clickedTopic);
-	res.end(clickedTopic);
+app.get('/search/:topic', function(req, res) {
+	res.end(req.params.topic);
 });
 
 
