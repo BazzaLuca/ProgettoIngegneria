@@ -98,6 +98,7 @@ app.listen((process.env.PORT || 80));
 
 
 app.get('/search/:topic', function(req, res) {
+	console.log("????????");
 	res.end(req.params.topic);
 });
 
