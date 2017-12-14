@@ -108,6 +108,7 @@ app.get('/search/:topic', function(req, res) {
 			}
 		}
 		res.end(JSON.stringify(arrayQuestions));
+		console.log("N DOM : " + arrayQuestions.length);
 	});
 	// res.end(topicScelto);
 });
