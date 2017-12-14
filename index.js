@@ -94,12 +94,15 @@ app.get('/', function(req, res) {
 	//console.log(arrayTopics);
 });
 
+
+app.get('/search/:topic', function(req, res) {
+	var topicScelto = req.params.topic;
+	res.end(topicScelto);
+});
+
+
 app.listen((process.env.PORT || 80));
 
 
-app.get('/search/:topic', function(req, res) {
-	console.log("????????");
-	res.end(req.params.topic);
-});
 
 
