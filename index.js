@@ -80,12 +80,12 @@ questions_collection.find(function(err, questions) {
 });
 
 
-//  Listen to '/' request praticamente quando starta
+//  Listen to '/' request praticamente quando starta su heroku
 app.get('/', function(req, res) {
 
 	bind.toFile('./home.html', 
 		{
-			topic : arrayTopics[0].topic 
+			topics : arrayTopics 
 		},
 		function (data) {
             res.writeHead(200, {'Content-Type': 'text/html'});
