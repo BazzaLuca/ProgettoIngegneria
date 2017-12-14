@@ -14,6 +14,10 @@
     		margin-right: auto;
 		}
 
+		form {
+		   display:inline-block;  
+		}
+
 	</style>
 </head>
 <body>
@@ -23,13 +27,17 @@
 	</div>
 	
 	<br>
+
+	<div>
 	
-	(:
+		(:
 			topics ~
 			<form action="https:\\secret-coast-61131.herokuapp.com/search/[:topic:]" method='get'> 
   				<input type="submit" value="[:topic:]">
   			</form>		
-	:)
+		:)
+
+	</div>
 </body>
 
 </html>
