@@ -98,7 +98,7 @@ app.get('/', function(req, res) {
 app.listen((process.env.PORT || 80));
 
 
-app.get('/ciao', function(req, res) {
+app.get('/search', function(req, res) {
 	res.end("ciao");
 });
 
