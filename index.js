@@ -31,18 +31,18 @@ questions_collection.find(function(err, questions) {
 		console.log(err);
 	}
 
-	/*var domanda = new questions_collection();
+	var domanda = new questions_collection();
     domanda.value = "d";
     domanda.answer = "a";
     domanda.rating = "1";
     domanda.nId = "2";
-    domanda.topic = "Isee";
+    domanda.topic = "Laurea";
     domanda.save(function(err) {
         if (err) {
             console.log("errore");
         }
     	console.log("domanda creata");     
-    });*/
+    });
 
 	// ritorna le questions
 	//console.log(questions);
@@ -107,8 +107,21 @@ app.get('/search/:topic', function(req, res) {
 				arrayQuestions.push(questions[i]);
 			}
 		}
-		res.end(JSON.stringify(arrayQuestions));
-		console.log("N DOM : " + arrayQuestions.length);
+
+		// Ordino le questions
+		var f = questions.length;
+		for (var i = 0; i < questions.length; i++) {
+			for (var c = 0; c < f; c++) {
+				if (questions[c].rating < questions[c+1].rating) {
+					var copia = questions[c];
+					questions[c] = questions[c+1];
+					questions[c+1] = copia;
+				}
+			} 
+			f = f - 1;
+		}
+
+		console.log(questions);
 	});
 	// res.end(topicScelto);
 });
