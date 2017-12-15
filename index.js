@@ -124,7 +124,7 @@ app.get('/search/:topic', function(req, res) {
 			f = f - 1;
 		}
 
-		bind.toFile('/search.html', 
+		bind.toFile('./search.html', 
 			{
 				domande : arrayQuestions
 			},
