@@ -108,6 +108,9 @@ app.get('/search/:topic', function(req, res) {
 			}
 		}
 
+		console.log("ARRAT QUESTIONS : " + arrayQuestions);
+		console.log("LENGTH " + arrayQuestions.length);
+
 		// Ordino le questions
 		var f = arrayQuestions.length;
 		for (var i = 0; i < arrayQuestions.length; i++) {
@@ -121,7 +124,7 @@ app.get('/search/:topic', function(req, res) {
 			f = f - 1;
 		}
 
-		console.log(arrayQuestions);
+		
 	});
 	// res.end(topicScelto);
 });
