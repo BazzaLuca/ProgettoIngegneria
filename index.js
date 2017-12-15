@@ -150,6 +150,9 @@ app.get('/risposta', function(req, res) {
 
 	// Cerco la domanda nel database
 	questions_collection.find(function(err, questions) {
+		if (err) {
+			console.log(err);
+		}
 		var i = 0;
 		var found = false;
 		while (found != true && i < questions.length) {
