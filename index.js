@@ -150,7 +150,6 @@ app.get('/risposta', function(req, res) {
 	questions_collection.find(function(err, questions) {
 		var i = 0;
 		var found = false;
-		var domanda = {};
 		while (found != true && i < questions.length) {
 			if (questions[i].id == nId && questions[i].topic == topic) {
 				bind.toFile('./answer', 
