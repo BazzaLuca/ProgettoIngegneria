@@ -12,11 +12,6 @@
 			display: flex;
 			align-items: center;
 		}
-
-		h1.title {
-			font-size: 32px;
-			margin-left: 10px;
-		}
 		h1.subtitle {
 			margin: 5px;
 		}
@@ -31,11 +26,18 @@
 		</div>
 
 		<div class="inline">
-			<h1 class="title"> TOPIC : (:topic:) </h1>
+			<h1> TOPIC : (:topic:) </h1>
 		</div>
 	</div>
 
-	<h1 class="subtitle"> DOMANDE </h1>
+	<h1 class="subtitle"> DOMANDE FREQUENTI </h1>
+
+	(:
+		domande ~ 
+		<a href="risposta?id=[:nId:]&topic=[:topic:]"> > [:value:] </a> 
+		<br>
+	:) 
+
 
 
 </body>
