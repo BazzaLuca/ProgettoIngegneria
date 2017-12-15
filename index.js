@@ -126,7 +126,8 @@ app.get('/search/:topic', function(req, res) {
 
 		bind.toFile('./search.html', 
 			{
-				domande : arrayQuestions
+				domande : arrayQuestions,
+				topic : topicScelto
 			},
 			function (data) {
            		res.writeHead(200, {'Content-Type': 'text/html'});
