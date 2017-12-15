@@ -103,6 +103,7 @@ app.get('/search/:topic', function(req, res) {
 			console.log(err);
 		}
 		for (var i = 0; i < questions.length; i++) {
+			console.log("QUESTIONS[i].topic = " + questions[i].topic + " topicScelto = " + topicScelto);
 			if (questions[i].topic == topicScelto) {
 				arrayQuestions.push(questions[i]);
 			}
