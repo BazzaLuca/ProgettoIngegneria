@@ -31,7 +31,7 @@ questions_collection.find(function(err, questions) {
 		console.log(err);
 	}
 
-	var domanda = new questions_collection();
+	/*var domanda = new questions_collection();
     domanda.value = "d";
     domanda.answer = "a";
     domanda.rating = "1";
@@ -42,7 +42,7 @@ questions_collection.find(function(err, questions) {
             console.log("errore");
         }
     	console.log("domanda creata");     
-    });
+    });*/
 
 	// ritorna le questions
 	//console.log(questions);
@@ -112,7 +112,7 @@ app.get('/search/:topic', function(req, res) {
 		console.log("LENGTH " + arrayQuestions.length);
 
 		// Ordino le questions
-		var f = arrayQuestions.length;
+		var f = arrayQuestions.length - 1;
 		for (var i = 0; i < arrayQuestions.length; i++) {
 			for (var c = 0; c < f; c++) {
 				if (arrayQuestions[c].rating < arrayQuestions[c+1].rating) {
