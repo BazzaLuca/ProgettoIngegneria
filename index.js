@@ -109,19 +109,19 @@ app.get('/search/:topic', function(req, res) {
 		}
 
 		// Ordino le questions
-		var f = questions.length;
-		for (var i = 0; i < questions.length; i++) {
+		var f = arrayQuestions.length;
+		for (var i = 0; i < arrayQuestions.length; i++) {
 			for (var c = 0; c < f; c++) {
-				if (questions[c].rating < questions[c+1].rating) {
-					var copia = questions[c];
-					questions[c] = questions[c+1];
-					questions[c+1] = copia;
+				if (arrayQuestions[c].rating < arrayQuestions[c+1].rating) {
+					var copia = arrayQuestions[c];
+					arrayQuestions[c] = arrayQuestions[c+1];
+					arrayQuestions[c+1] = copia;
 				}
 			} 
 			f = f - 1;
 		}
 
-		console.log(questions);
+		console.log(arrayQuestions);
 	});
 	// res.end(topicScelto);
 });
