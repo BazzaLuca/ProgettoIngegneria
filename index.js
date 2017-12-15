@@ -109,7 +109,7 @@ app.get('/search/:topic', function(req, res) {
 		}
 
 		
-		console.log("LENGTH " + arrayQuestions.length);
+		// console.log("LENGTH " + arrayQuestions.length);
 
 		// Ordino le questions
 		var f = arrayQuestions.length - 1;
@@ -143,8 +143,35 @@ app.get('/search/:topic', function(req, res) {
 app.get('/risposta', function(req, res) {
 	var nId = req.query.id;
 	var topic = req.query.topic;
-	console.log("ID DOMANDA : " + nId);
-	console.log("TOPIC DOMANDA : " + topic);
+	// console.log("ID DOMANDA : " + nId);
+	// console.log("TOPIC DOMANDA : " + topic);
+
+	// Cerco la domanda nel database
+	questions_collection.find(function(err, questions) {
+		var i = 0;
+		var found = false;
+		var domanda = {};
+		while (found != true && i < questions.length) {
+			if (questions[i].id == nId && questions[i].topic == topic) {
+				bind.toFile('/answer', 
+					{
+						domanda : questions[i].value,
+						topic : questions[i].topic,
+						risposta : questions[i].answer,
+						screenshot : questions[i].screen
+					},
+					function (data) {
+           				res.writeHead(200, {'Content-Type': 'text/html'});
+            			res.end(data);
+       				}
+				);
+				found = true;
+			}
+			i = i + 1;
+		}
+
+	});
+
 });
 
 app.listen((process.env.PORT || 80));
