@@ -102,8 +102,7 @@ app.get('/search/:topic', function(req, res) {
 		if (err) {
 			console.log(err);
 		}
-		for (var i = 0; i < questions.length; i++) {
-			console.log("QUESTIONS[i].topic = " + questions[i].topic + " topicScelto = " + topicScelto);
+		for (var i = 0; i < questions.length; i++) {s
 			if (questions[i].topic == topicScelto) {
 				arrayQuestions.push(questions[i]);
 			}
@@ -124,6 +123,16 @@ app.get('/search/:topic', function(req, res) {
 			} 
 			f = f - 1;
 		}
+
+		bind.toFile('/search.html', 
+			{
+				domande : arrayQuestions
+			},
+			function (data) {
+           		res.writeHead(200, {'Content-Type': 'text/html'});
+            	res.end(data);
+       		}
+		);
 
 		
 	});
