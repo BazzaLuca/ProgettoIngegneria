@@ -140,6 +140,12 @@ app.get('/search/:topic', function(req, res) {
 	// res.end(topicScelto);
 });
 
+app.get('/risposta', function(req, res) {
+	var nId = req.query.id;
+	var topic = req.query.topic;
+	console.log("ID DOMANDA : " + nId);
+	console.log("TOPIC DOMANDA : " + topic);
+});
 
 app.listen((process.env.PORT || 80));
 
