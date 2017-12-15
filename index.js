@@ -108,7 +108,7 @@ app.get('/search/:topic', function(req, res) {
 			}
 		}
 
-		console.log("ARRAT QUESTIONS : " + arrayQuestions);
+		
 		console.log("LENGTH " + arrayQuestions.length);
 
 		// Ordino le questions
