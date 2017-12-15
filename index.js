@@ -157,7 +157,7 @@ app.get('/risposta', function(req, res) {
 		var found = false;
 		while (found != true && i < questions.length) {
 			if (questions[i].nId == nId && questions[i].topic == topic) {
-				bind.toFile('./answer', 
+				bind.toFile('./answer.html', 
 					{
 						domanda : questions[i].value,
 						topic : questions[i].topic,
