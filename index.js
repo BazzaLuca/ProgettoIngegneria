@@ -156,9 +156,7 @@ app.get('/risposta', function(req, res) {
 		var i = 0;
 		var found = false;
 		while (found != true && i < questions.length) {
-			console.log("QUESTION ID : " + questions[i].id + " ID : " + nId);
-			console.log("QUESTION TOPIC : "+ questions[i].topic + " TOPIC : " + topic);
-			if (questions[i].id == nId && questions[i].topic == topic) {
+			if (questions[i].nId == nId && questions[i].topic == topic) {
 				bind.toFile('./answer', 
 					{
 						domanda : questions[i].value,
