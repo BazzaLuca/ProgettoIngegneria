@@ -1,4 +1,5 @@
 var express = require('express');
+var apiai = require('apiai');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://LucaBazza:test01@ds139436.mlab.com:39436/questions_database');
@@ -6,7 +7,7 @@ mongoose.connect('mongodb://LucaBazza:test01@ds139436.mlab.com:39436/questions_d
 var app = express();
 
 // client access token da cambiare con il mio
-// var dia = apiai('c22a4fe6d883458e8063bc34327996d5');
+var dia = apiai('c22a4fe6d883458e8063bc34327996d5');
 
 // Per template
 var bind = require('bind');
