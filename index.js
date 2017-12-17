@@ -257,7 +257,7 @@ app.get('/segreteria', function(req, res) {
 });
 
 app.post('/messaggio', function(req, res) {
-	
+	console.log(req.body.message);
 });	
 
 app.listen((process.env.PORT || 80));
