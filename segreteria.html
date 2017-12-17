@@ -37,6 +37,14 @@
 			display: block;
 			text-align: center;
 		}
+		textarea {
+			width: 100%;
+		}
+		input.b {
+			width: 10em;
+			height: 4em;
+			margin-top: 10px;
+		}
 	</style>
 </head>
 <body>
@@ -56,8 +64,8 @@
 	<br>
 
 	<form action="https:\\secret-coast-61131.herokuapp.com/messaggio" method='post'>
-  		<textarea name="message"> Ciao </textarea>
-  		<input type="submit" value="send">
+  		<textarea name="message" rows="15" cols="100" required="true"></textarea>
+  		<input class="b" type="submit" value="INVIA">
 	</form>
 </body>
 </html>
