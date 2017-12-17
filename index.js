@@ -4,6 +4,10 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://LucaBazza:test01@ds139436.mlab.com:39436/questions_database');
 
 var app = express();
+
+// client access token da cambiare con il mio
+var dia = apiai('c22a4fe6d883458e8063bc34327996d5');
+
 // Per template
 var bind = require('bind');
 
@@ -94,6 +98,22 @@ app.get('/', function(req, res) {
 	//console.log(arrayTopics);
 });
 
+
+app.get('/question', function(req, res) {
+	//process
+    // questionValue è il nome della barra di ricerca nell'html
+    var q = req.query.questionValue;
+    //write response
+
+    // Richiesta 
+    // sessionId da cambiare con quello di Marco
+    var request = dia.textRequest(q, {
+    	sessionId: 'unibot-437c3'
+    });
+
+    console.log("ciao");
+
+});
 
 app.get('/search/:topic', function(req, res) {
 	var topicScelto = req.params.topic;
