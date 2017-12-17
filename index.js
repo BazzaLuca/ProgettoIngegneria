@@ -101,6 +101,37 @@ app.get('/', function(req, res) {
 
 
 
+app.get('/question', function(req, res) {
+	var q = req.query.questionValue;
+
+    // Richiesta 
+    var request = dia.textRequest(q, {
+    	sessionId: 'unibot-437c3'
+    });
+
+    request.on('response', function(response) {
+    	 // Devo prendere la risposta vera e propria
+         // 24/11 Sostituito l'agent placeholder con il io funziona
+         var ris = response.result.fulfillment.speech;
+         // devo fare la stessa cosa di prima
+         var arrayQuestions = [];
+         questions_collection.find(function(err, questions) {
+         	if (err) {
+         		console.log(err);
+         	}
+         	for (var i = 0; i < questions.length; i++) {
+         		if (questions[i].topic == ris) {
+         			arrayQuestions.push(questions[i]);
+         		}
+         	}
+         	console.log("ARRAY : " + arrayQuestions);
+        });
+    });
+
+
+
+});
+
 
 app.get('/search/:topic', function(req, res) {
 	var topicScelto = req.params.topic;
