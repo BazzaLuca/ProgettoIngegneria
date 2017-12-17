@@ -103,6 +103,7 @@ app.get('/', function(req, res) {
 
 app.get('/question', function(req, res) {
 	var q = req.query.questionValue;
+	console.log("Q : " +  q);
 
     // Richiesta 
     var request = dia.textRequest(q, {
