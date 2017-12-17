@@ -256,13 +256,9 @@ app.get('/segreteria', function(req, res) {
 	);
 });
 
-app.get('/messaggio', function(req, res) {
-	var message = req.query.comment;
-	var username = req.query.usrname;
-	//  gestione messaggio alla segreteria
-	console.log("MESSAGE = " + message);
-	console.log("USERNAME : "+ username);
-})
+app.post('/messaggio', function(req, res) {
+	
+});	
 
 app.listen((process.env.PORT || 80));
 
