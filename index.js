@@ -256,7 +256,7 @@ app.get('/segreteria', function(req, res) {
 	);
 });
 
-app.get('./messaggio', function(req, res) {
+app.get('/messaggio', function(req, res) {
 	var message = req.query.comment;
 	//  gestione messaggio alla segreteria
 	console.log("MESSAGE = " + message);
