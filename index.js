@@ -244,6 +244,24 @@ app.get('/risposta', function(req, res) {
 
 });
 
+app.get('/segreteria', function(req, res) {
+	bind.toFile('./segreteria.html',
+		{
+
+		},
+		function (data) {
+       	    res.writeHead(200, {'Content-Type': 'text/html'});
+         	res.end(data); 				
+		}
+	);
+});
+
+app.post('./messaggio', function(req, res) {
+	var message = req.body.comment;
+	//  gestione messaggio alla segreteria
+	console.log("MESSAGE = " + message);
+})
+
 app.listen((process.env.PORT || 80));
 
 

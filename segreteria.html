@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MESSAGGIA LA SEGRETERIA</title>
+	<meta charset="utf-8">
+	<style>
+		div.inline {
+			display: inline-block;
+			margin: 5px;
+		}
+		div.container {
+			display: flex;
+			align-items: center;
+		}
+		h1.subtitle {
+			margin: 5px;
+		}
+		a:link {
+			color: black;
+		}
+		a {
+			font-size: 24px;
+			text-decoration: none;
+		}
+
+		a.mail {
+			font-size: 20px;
+		}
+		a.mail:hover {
+			text-decoration: underline;
+			color: blue;
+		}
+		a.mail:visited {
+			color: black;
+		}
+		div.mail {
+			display: block;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="inline">
+			<a href="https:\\secret-coast-61131.herokuapp.com/">
+				<img src="https://www.biblioteca.unitn.it/sites/www.biblioteca.unitn.it/modules/asia_opengraphmeta/images/logo_fb.png" />
+			</a>
+		</div>
+
+		<div class="inline">
+			<h1> INVIA UN MESSAGGIO ALLA SEGRETERIA </h1>
+		</div>
+	</div>
+
+	<h1 class="subtitle"> MESSAGGIO </h1>
+	<br>
+
+	<form action="https:\\secret-coast-61131.herokuapp.com/messaggio" method='post'>
+  			<textarea name="comment" form="usrform">Enter text here...</textarea>
+  			<input type="submit" value="send">
+	</form>
+</body>
+</html>
