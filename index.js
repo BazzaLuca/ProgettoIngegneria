@@ -129,6 +129,13 @@ app.get('/question', function(req, res) {
 			res.end(arrayQuestions);
         });
     });
+
+    request.on('error', function(error) {
+    	 // Devo prendere la risposta vera e propria
+   		 console.log(error);
+	});
+	
+	request.end();
 });
 
 
