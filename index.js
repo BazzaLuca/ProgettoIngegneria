@@ -258,7 +258,7 @@ app.get('/segreteria', function(req, res) {
 
 app.get('/messaggio', function(req, res) {
 	var message = req.query.comment;
-	var usrname = req.query.usrname;
+	var username = req.query.usrname;
 	//  gestione messaggio alla segreteria
 	console.log("MESSAGE = " + message);
 	console.log("USERNAME : "+ username);
