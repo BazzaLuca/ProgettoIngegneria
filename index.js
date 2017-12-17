@@ -126,12 +126,9 @@ app.get('/question', function(req, res) {
 					arrayQuestions.push(questions[i]);
 				}
 			}
-			console.log("ARRAY : " + arrayQuestions);
+			res.end(arrayQuestions);
         });
     });
-
-
-
 });
 
 
