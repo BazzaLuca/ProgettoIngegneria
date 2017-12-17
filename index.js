@@ -121,12 +121,11 @@ app.get('/question', function(req, res) {
          		console.log(err);
          	}
          	for (var i = 0; i < questions.length; i++) {
-         		console.log("QUESTIONS[i].topic = " + questions[i].topic + "  ris = " + ris);
 				if (questions[i].topic == ris) {
 					arrayQuestions.push(questions[i]);
 				}
 			}
-			res.end(arrayQuestions);
+			console.log("ARRAY : " + arrayQuestions);
         });
     });
 
@@ -134,7 +133,7 @@ app.get('/question', function(req, res) {
     	 // Devo prendere la risposta vera e propria
    		 console.log(error);
 	});
-	
+
 	request.end();
 });
 
