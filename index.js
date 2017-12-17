@@ -121,8 +121,9 @@ app.get('/question', function(req, res) {
          		console.log(err);
          	}
          	for (var i = 0; i < questions.length; i++) {
-				if (questions[i].topic == topicScelto) {
-				arrayQuestions.push(questions[i]);
+         		console.log("QUESTIONS[i].topic = " + questions[i].topic + "  ris = " + ris);
+				if (questions[i].topic == ris) {
+					arrayQuestions.push(questions[i]);
 				}
 			}
 			console.log("ARRAY : " + arrayQuestions);
