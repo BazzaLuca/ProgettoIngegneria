@@ -125,7 +125,30 @@ app.get('/question', function(req, res) {
 					arrayQuestions.push(questions[i]);
 				}
 			}
-			console.log("ARRAY : " + arrayQuestions);
+
+			// Ordino le questions
+			var f = arrayQuestions.length - 1;
+			for (var i = 0; i < arrayQuestions.length; i++) {
+				for (var c = 0; c < f; c++) {
+					if (arrayQuestions[c].rating < arrayQuestions[c+1].rating) {
+						var copia = arrayQuestions[c];
+						arrayQuestions[c] = arrayQuestions[c+1];
+						arrayQuestions[c+1] = copia;
+					}
+				} 
+				f = f - 1;
+			}
+
+			bind.toFile('./search.html', 
+			{
+				domande : arrayQuestions,
+				topic : ris
+			},
+			function (data) {
+           		res.writeHead(200, {'Content-Type': 'text/html'});
+            	res.end(data);
+       		}
+			);
         });
     });
 
