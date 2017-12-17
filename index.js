@@ -111,21 +111,21 @@ app.get('/question', function(req, res) {
     });
 
     request.on('response', function(response) {
-    	 // Devo prendere la risposta vera e propria
-         // 24/11 Sostituito l'agent placeholder con il io funziona
-         var ris = response.result.fulfillment.speech;
-         // devo fare la stessa cosa di prima
-         var arrayQuestions = [];
-         questions_collection.find(function(err, questions) {
+    	// Devo prendere la risposta vera e propria
+        // 24/11 Sostituito l'agent placeholder con il io funziona
+        var ris = response.result.fulfillment.speech;
+        // devo fare la stessa cosa di prima
+        var arrayQuestions = [];
+        questions_collection.find(function(err, questions) {
          	if (err) {
          		console.log(err);
          	}
          	for (var i = 0; i < questions.length; i++) {
-         		if (questions[i].topic == ris) {
-         			arrayQuestions.push(questions[i]);
-         		}
-         	}
-         	console.log("ARRAY : " + arrayQuestions);
+				if (questions[i].topic == topicScelto) {
+				arrayQuestions.push(questions[i]);
+				}
+			}
+			console.log("ARRAY : " + arrayQuestions);
         });
     });
 
