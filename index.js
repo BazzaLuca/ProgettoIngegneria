@@ -258,8 +258,10 @@ app.get('/segreteria', function(req, res) {
 
 app.get('/messaggio', function(req, res) {
 	var message = req.query.comment;
+	var usrname = req.query.username;
 	//  gestione messaggio alla segreteria
 	console.log("MESSAGE = " + message);
+	console.log("USERNAME : "+ username);
 })
 
 app.listen((process.env.PORT || 80));
