@@ -280,7 +280,7 @@ app.post('/messaggio', function(req, res) {
 		if(error) {
 			console.log(error);
 		}
-		console.log("message sent : " + info.response);
+		console.log("message sent : ");
 	});
 });	
 
