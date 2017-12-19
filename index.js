@@ -281,7 +281,9 @@ app.post('/messaggio', function(req, res) {
 			console.log(error);
 			console.log("PORCODIO");
 		}
-		console.log("message sent : ");
+		else {		
+			console.log("message sent");
+		}
 	});
 });	
 
