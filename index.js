@@ -12,6 +12,9 @@ var dia = apiai('c22a4fe6d883458e8063bc34327996d5');
 // Per template
 var bind = require('bind');
 
+// Per email
+var nodemailer = require('nodemailer');
+
 var questions_collection = require('./Questions.js');
 
 var bodyParser = require('body-parser');
@@ -257,7 +260,28 @@ app.get('/segreteria', function(req, res) {
 });
 
 app.post('/messaggio', function(req, res) {
-	console.log(req.body.message);
+	var textMessage = req.body.message;
+	var transporter = nodemailer.createTransport({
+		Service : 'Gmail',
+		auth : {
+			user : 'lucabazzatest01@gmail.com',
+			pass : test01_ingegneria
+		}
+	});
+
+	var mailOptions = {
+		from: 'lucabazzatest01@gmail.com',
+		to : 'lucabazza123@gmail.com',
+		subject : "RICHIESTA DI INSERIMENTO DOMANDA",
+		text : textMessage
+	};
+
+	transporter.sendMail(mailOptions, function(error, info) {
+		if(error) {
+			console.log(error);
+		}
+		console.log("message sent : " + info.response);
+	});
 });	
 
 app.listen((process.env.PORT || 80));
