@@ -265,7 +265,7 @@ app.post('/messaggio', function(req, res) {
 		Service : 'Gmail',
 		auth : {
 			user : 'lucabazzatest01@gmail.com',
-			pass : test01_ingegneria
+			pass : 'test01_ingegneria'
 		}
 	});
 
