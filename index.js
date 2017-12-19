@@ -274,7 +274,7 @@ app.post('/messaggio', function(req, res) {
 		to : 'lucabazza123@gmail.com',
 		subject : "RICHIESTA DI INSERIMENTO DOMANDA",
 		text : textMessage
-	};
+	}
 
 	transporter.sendMail(mailOptions, function(error, info) {
 		if(error) {
