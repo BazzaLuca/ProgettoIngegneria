@@ -36,7 +36,6 @@ app.use(bodyParser.json());
 
 // variabile per il logn
 var loggedIn = true;
-var loggedInUser = "Luca";
 
 questions_collection.find(function(err, questions) {
 	if (err) {
@@ -97,8 +96,7 @@ app.get('/', function(req, res) {
 	bind.toFile('./home.html', 
 		{
 			topics : arrayTopics,
-			logged : loggedIn,
-			loggedUser : loggedInUser
+			logged : loggedIn
 		},
 		function (data) {
             res.writeHead(200, {'Content-Type': 'text/html'});
