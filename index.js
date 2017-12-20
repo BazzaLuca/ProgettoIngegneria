@@ -16,6 +16,7 @@ var bind = require('bind');
 var nodemailer = require('nodemailer');
 
 var questions_collection = require('./Questions.js');
+var users_collection = require('./Users.js');
 
 var bodyParser = require('body-parser');
 var util = require('util');
@@ -317,7 +318,16 @@ app.get('/loginForm', function(req, res) {
 app.post('/login', function(req, res) {
 	var username = req.body.username;
 	var password = req.body.password;
-	console.log("USERNAME : " + username + " PASSWORD : " + password);
+
+	// Cerco nel database
+	var utente = new users_collection();
+	utente.username = "Luca";
+	utente.password = "test01";
+	utente.save(function(err) {
+		if (err) {
+			console.log(err);
+		}
+	});
 });
 
 app.listen((process.env.PORT || 8080));
