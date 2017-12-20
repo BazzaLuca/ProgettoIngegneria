@@ -309,9 +309,9 @@ app.get('/loginForm', function(req, res) {
 		{
 		},
 		function (data) {
-       	    		res.writeHead(200, {'Content-Type': 'text/html'});
-         			res.end(data); 				
-			}
+       	    res.writeHead(200, {'Content-Type': 'text/html'});
+         	res.end(data); 				
+		}
 	);
 });
 
@@ -340,11 +340,24 @@ app.post('/login', function(req, res) {
 				if (users[i].username == username && users[i].password == password) {
 					loggedIn = true;
 					found = true;
-
-					// Rimando alla pagina dell'area personale
-					res.end("loggato");
 				}
 				i = i + 1;
+			}
+
+			// CHECK SE TROVATO
+			if (found == true) {
+				// Rimando alla pagina dell'area personale
+				bind.toFile('./personalArea.html', 
+					{
+					},
+					function (data) {
+       	  		  	    res.writeHead(200, {'Content-Type': 'text/html'});
+         				res.end(data); 				
+					}
+				);
+			}
+			if (found == false) {
+				// Rimando alla pagina di login 
 			}
 
 		}
