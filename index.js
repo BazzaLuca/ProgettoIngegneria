@@ -261,17 +261,14 @@ app.get('/segreteria', function(req, res) {
 
 app.post('/messaggio', function(req, res) {
 	var textMessage = req.body.message;
-	var smtpConfig = {
-		host: 'smtp.gmail.com',
-		PORT : 465,
-		secure : true,
-		auth : {
-				user : 'lucabazzatest01@gmail.com',
-				pass : 'test01_ingegneria'
-		}
-	};
-
-	var transporter = nodemailer.createTransport(smtpConfig);
+	
+	var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+       		user: 'lucabazzatest01@gmail.com',
+       	 	pass: 'test01_ingegneria'
+    	}
+	});
 
 	var mailOptions = {
 		from: 'lucabazzatest01@gmail.com',
