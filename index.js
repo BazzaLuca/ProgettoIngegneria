@@ -346,9 +346,10 @@ app.post('/login', function(req, res) {
 			// CHECK SE TROVATO
 			if (found == true) {
 				// Rimando alla pagina dell'area personale
+				var upperUsername = username.toUpperCase()
 				bind.toFile('./personalArea.html', 
 					{
-						user : username
+						user : upperUsername
 					},
 					function (data) {
        	  		  	    res.writeHead(200, {'Content-Type': 'text/html'});
