@@ -336,7 +336,8 @@ app.post('/login', function(req, res) {
 			var i = 0;
 			var found = false;
 			while (found != true && i < users.length) {
-				if (users[i].username == username && username[i].password == password) {
+				//console.log("USERS[i].USERNAME : " + users[i].username + " USERS[i].password : " + users)
+				if (users[i].username == username && users[i].password == password) {
 					loggedIn = true;
 					found = true;
 
