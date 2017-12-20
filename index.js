@@ -314,7 +314,11 @@ app.get('/loginForm', function(req, res) {
 	);
 });
 
-
+app.post('/login', function(req, res) {
+	var username = req.body.username;
+	var password = req.body.password;
+	console.log("USERNAME : " + username + " PASSWORD : " + password);
+});
 
 app.listen((process.env.PORT || 8080));
 
