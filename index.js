@@ -35,8 +35,8 @@ app.use(bodyParser.json());
 // Prendo tutte le domande dal database
 
 // variabile per il logn
-var loggedIn = false;
-var loggedInUser = "";
+var loggedIn = true;
+var loggedInUser = "Luca";
 
 questions_collection.find(function(err, questions) {
 	if (err) {
