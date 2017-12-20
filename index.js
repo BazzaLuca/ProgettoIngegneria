@@ -345,7 +345,6 @@ app.post('/login', function(req, res) {
 
 			// CHECK SE TROVATO
 			if (found == true) {
-				// Rimando alla pagina dell'area personale
 				bind.toFile('./personalArea.html', 
 					{
 					},
@@ -363,6 +362,20 @@ app.post('/login', function(req, res) {
 	});
 
 });
+
+
+app.get('/personalArea', function(req, res) {
+	bind.toFile('./personalArea.html', 
+		{
+
+		},
+		function (data) {
+       	    res.writeHead(200, {'Content-Type': 'text/html'});
+         	res.end(data); 				
+		}
+	);
+});
+
 
 app.listen((process.env.PORT || 8080));
 
