@@ -261,11 +261,12 @@ app.get('/segreteria', function(req, res) {
 
 app.post('/messaggio', function(req, res) {
 	var textMessage = req.body.message;
-	var transporter = nodemailer.createTransport({
-		Service : 'Gmail',
-		auth : {
-			user : 'lucabazzatest01@gmail.com',
-			pass : 'test01_ingegneria'
+	var transporter = nodemailer.createTransport('smtps://lucabazzatest01@gmail.com:test01_ingengeria@sm‌​tp.gmail.com',
+		{
+			Service : 'Gmail',
+			auth : {
+				user : 'lucabazzatest01@gmail.com',
+				pass : 'test01_ingegneria'
 		}
 	});
 
