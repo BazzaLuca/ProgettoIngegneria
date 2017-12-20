@@ -250,7 +250,7 @@ app.get('/risposta', function(req, res) {
 app.get('/segreteria', function(req, res) {
 	bind.toFile('./segreteria.html',
 		{
-
+			sent : false
 		},
 		function (data) {
        	    res.writeHead(200, {'Content-Type': 'text/html'});
@@ -259,6 +259,8 @@ app.get('/segreteria', function(req, res) {
 	);
 });
 
+
+// 20/12 invio riuscito
 app.post('/messaggio', function(req, res) {
 	var textMessage = req.body.message;
 	
@@ -283,7 +285,16 @@ app.post('/messaggio', function(req, res) {
 			console.log("errore");
 		}
 		else {		
-			console.log("message sent");
+			// Rimando alla pagina di inserimento o alla home
+			bind.toFile('./segreteria', 
+				{
+					sent : true
+				},
+				function (data) {
+       	    		res.writeHead(200, {'Content-Type': 'text/html'});
+         			res.end(data); 				
+				}
+			);
 		}
 	});
 });	

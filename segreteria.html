@@ -56,5 +56,10 @@
   		<textarea name="message" rows="15" cols="100" required="true"></textarea>
   		<input class="b" type="submit" value="INVIA">
 	</form>
+
+	(:
+		if[sent] ~
+			[:then ~ <font color="green"> E-mail inviata alla segreteria </font>: ]
+	:)
 </body>
 </html>
