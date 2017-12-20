@@ -336,7 +336,6 @@ app.post('/login', function(req, res) {
 			var i = 0;
 			var found = false;
 			while (found != true && i < users.length) {
-				//console.log("USERS[i].USERNAME : " + users[i].username + " USERS[i].password : " + users)
 				if (users[i].username == username && users[i].password == password) {
 					loggedIn = true;
 					found = true;
@@ -349,6 +348,7 @@ app.post('/login', function(req, res) {
 				// Rimando alla pagina dell'area personale
 				bind.toFile('./personalArea.html', 
 					{
+						user : username
 					},
 					function (data) {
        	  		  	    res.writeHead(200, {'Content-Type': 'text/html'});
