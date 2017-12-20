@@ -30,10 +30,10 @@
     		text-align: center;
 		}
 
+
 	</style>
 </head>
 <body>
-
 	<div class="imageContainer">
 		<img class="centered" src="https://pbs.twimg.com/profile_images/770911493156208640/OrVrIFGQ_400x400.jpg" alt="xdddddddd"/>
 	</div>
@@ -57,6 +57,14 @@
 		:)
 
 	</div>
+
+	<br>
+	(:if[loggedIn] ~
+        [:then ~ <font color="green"> Logged in as : (:loggedUser:) </font> :]
+        [:else ~ <font color="red"> Not Logged In </font> :]
+    :)
+
+
 </body>
 
 </html>

@@ -34,6 +34,10 @@ app.use(bodyParser.json());
 // Qui inizia il programma serio
 // Prendo tutte le domande dal database
 
+// variabile per il logn
+var loggedIn = false;
+var loggedInUser = "";
+
 questions_collection.find(function(err, questions) {
 	if (err) {
 		console.log(err);
@@ -92,7 +96,9 @@ app.get('/', function(req, res) {
 
 	bind.toFile('./home.html', 
 		{
-			topics : arrayTopics 
+			topics : arrayTopics,
+			logged : loggedIn,
+			loggedUser : loggedInUser
 		},
 		function (data) {
             res.writeHead(200, {'Content-Type': 'text/html'});
