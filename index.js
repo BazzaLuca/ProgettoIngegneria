@@ -319,15 +319,36 @@ app.post('/login', function(req, res) {
 	var username = req.body.username;
 	var password = req.body.password;
 
-	// Cerco nel database
-	var utente = new users_collection();
+	// ADDED USER
+	/*var utente = new users_collection();
 	utente.username = "Luca";
 	utente.password = "test01";
 	utente.save(function(err) {
 		if (err) {
 			console.log(err);
 		}
+	});*/
+	users_collection.find(function(err, users) {
+		if (err) {
+			console.log(err);
+		}
+		else {
+			var i = 0;
+			var found = false;
+			while (found != true && i < users.length) {
+				if (users[i].username == username && username[i].password) {
+					loggedIn = true;
+					found = true;
+
+					// Rimando alla pagina dell'area personale
+					res.end("loggato");
+				}
+				i = i + 1;
+			}
+
+		}
 	});
+
 });
 
 app.listen((process.env.PORT || 8080));
