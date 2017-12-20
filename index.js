@@ -261,21 +261,24 @@ app.get('/segreteria', function(req, res) {
 
 app.post('/messaggio', function(req, res) {
 	var textMessage = req.body.message;
-	var transporter = nodemailer.createTransport('smtps://lucabazzatest01@gmail.com:test01_ingengeria@sm‌​tp.gmail.com',
-		{
-			Service : 'Gmail',
-			auth : {
+	var smtpConfig = {
+		host: 'smtp.gmail.com',
+		PORT : 465,
+		secure : true,
+		auth : {
 				user : 'lucabazzatest01@gmail.com',
 				pass : 'test01_ingegneria'
 		}
-	});
+	};
+
+	var transporter = nodemailer.createTransport(smtpConfig);
 
 	var mailOptions = {
 		from: 'lucabazzatest01@gmail.com',
 		to : 'lucabazza123@gmail.com',
 		subject : "RICHIESTA DI INSERIMENTO DOMANDA",
 		text : textMessage
-	}
+	};
 
 	transporter.sendMail(mailOptions, function(error, info) {
 		if(error) {
