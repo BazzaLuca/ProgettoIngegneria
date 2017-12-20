@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 // Prendo tutte le domande dal database
 
 // variabile per il logn
-var loggedIn = true;
+var loggedIn = false;
 
 questions_collection.find(function(err, questions) {
 	if (err) {
@@ -301,7 +301,20 @@ app.post('/messaggio', function(req, res) {
 			);
 		}
 	});
-});	
+});
+
+app.get('/loginForm', function(req, res) {
+	bind.toFile('./loginPage.html', 
+		{
+		},
+		function (data) {
+       	    		res.writeHead(200, {'Content-Type': 'text/html'});
+         			res.end(data); 				
+			}
+	);
+});
+
+
 
 app.listen((process.env.PORT || 8080));
 
