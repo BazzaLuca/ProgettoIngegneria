@@ -56,13 +56,15 @@
   			</form>		
 		:)
 
+		<br>
+		(:
+			if[logged] ~
+       	    [:then ~ <font color="green"> Logged in as : (:loggedUser:) </font> :]
+       	    [:else ~ <font color="red"> Not Logged In </font> :]
+    	:)
+
 	</div>
 
-	<br>
-	(:if[loggedIn] ~
-        [:then ~ <font color="green"> Logged in as : (:loggedUser:) </font> :]
-        [:else ~ <font color="red"> Not Logged In </font> :]
-    :)
 
 
 </body>
