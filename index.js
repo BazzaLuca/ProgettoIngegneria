@@ -286,7 +286,7 @@ app.post('/messaggio', function(req, res) {
 		}
 		else {		
 			// Rimando alla pagina di inserimento o alla home
-			bind.toFile('./segreteria', 
+			bind.toFile('./segreteria.html', 
 				{
 					sent : true
 				},
