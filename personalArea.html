@@ -42,6 +42,15 @@
 			margin-left: 20px;
 			margin-bottom: 10px;
 		}
+		p.modify {
+			margin-left: 20px;
+		}
+
+		input.topics {
+			width : 15em;
+			height: 3em;
+			margin-left: 20px;
+		}
 	</style>
 </head>
 <body>
@@ -89,6 +98,20 @@
 			<textarea class="q" name="answer" rows="6" cols="100" required="true"></textarea>
 			<input class="submit" type="submit" value="INSERISCI">
 		</form>
+
+	</div>
+
+	<div class="choose">
+		<h2 class="subtitle"> MODIFICA O ELIMINA UNA DOMANDA ESISTENTE </h2>
+		<p class="modify"> SCEGLI IL TOPIC CONTENENTE LA DOMANDA DA MODIFICARE O ELIMINARE </p>
+
+		(:
+			topics ~
+			<form action="https:\\secret-coast-61131.herokuapp.com/[:topic:]" method='get'>
+				<input class="topics" type="submit" value="[:topic:]">
+			</form>
+		:)
+
 	</div>
 
 </body>
