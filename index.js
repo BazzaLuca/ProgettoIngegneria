@@ -394,6 +394,7 @@ app.post('/addQuestion', function(req, res) {
 
 	// Se è stato deciso di aggiungere un nuovo topic
 	if (chosenTopic != "") {
+		console.log("ciao");
 		var domandaDatabase = new questions_collection();
 		domandaDatabase.topic = newTopic;
 		domandaDatabase.value = nuovaDomanda;
