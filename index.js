@@ -356,6 +356,15 @@ app.post('/login', function(req, res) {
 			}
 			if (found == false) {
 				// Rimando alla pagina di login 
+				bind.toFile('./loginPage.html', 
+					{
+
+					}, 
+					function(data) {
+						res.writeHead(200, {'Content-Type': 'text/html'});
+         				res.end(data); 	
+					}
+				);
 			}
 
 		}
