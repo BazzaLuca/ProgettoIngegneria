@@ -393,7 +393,7 @@ app.post('/addQuestion', function(req, res) {
 	var nuovaRisposta = req.body.answer;
 
 	// Se è stato deciso di aggiungere un nuovo topic
-	if (chosenTopic != "") {
+	if (newTopic != "") {
 		console.log("ciao");
 		var domandaDatabase = new questions_collection();
 		domandaDatabase.topic = newTopic;
