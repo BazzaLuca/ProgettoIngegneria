@@ -431,7 +431,7 @@ app.post('/addQuestion', function(req, res) {
 				for (var i = 0; i < questions.length; i++) {
 					console.log("Questions[i].topic " + questions[i].topic + "  chosenTopic : " + chosenTopic);
 					console.log("question[i].nId :" + parseInt(questions[i].nId) + "max : " + max);
-					if (questions[i].topic = chosenTopic && parseInt(questions[i].nId) > max) {
+					if (questions[i].topic == chosenTopic && parseInt(questions[i].nId) > max) {
 						max = parseInt(questions[i].nId);
 						console.log(max);
 					}
