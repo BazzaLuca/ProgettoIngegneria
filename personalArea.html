@@ -49,7 +49,7 @@
 		input.topics {
 			width : 15em;
 			height: 3em;
-			margin-left: 20px;
+			margin-bottom: 10px;
 		}
 	</style>
 </head>
@@ -107,9 +107,11 @@
 
 		(:
 			topics ~
-			<form action="https:\\secret-coast-61131.herokuapp.com/[:topic:]" method='get'>
-				<input class="topics" type="submit" value="[:topic:]">
-			</form>
+			<div class="inline">
+				<form action="https:\\secret-coast-61131.herokuapp.com/[:topic:]" method='get'>
+					<input class="topics" type="submit" value="[:topic:]">
+				</form>
+			</div
 		:)
 
 	</div>
