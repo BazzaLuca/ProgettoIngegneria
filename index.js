@@ -389,8 +389,77 @@ app.get('/personalArea', function(req, res) {
 app.post('/addQuestion', function(req, res) {
 	var nuovaDomanda = req.body.question;
 	var chosenTopic = req.body.dropdownTopics;
-	console.log(nuovaDomanda);
-	console.log("CHOSEN TOPIC : " + chosenTopic);
+	var newTopic = req.body.newTopic;
+	var nuovaRisposta = req.body.answer;
+
+	// Se è stato deciso di aggiungere un nuovo topic
+	if (chosenTopic != "") {
+		var domandaDatabase = new questions_collection();
+		domandaDatabase.topic = newTopic;
+		domandaDatabase.value = nuovaDomanda;
+		domandaDatabase.nId = "1";
+		domandaDatabase.screen = "";
+		domandaDatabase.answer = nuovaRisposta;
+		domandaDatabase.rating = "1";
+		domandaDatabase.save(function(err) {
+			if (err) {
+				console.log(err); 
+			}
+			else {
+				bind.toFile('./personalArea.html', 
+					{
+
+					}, 
+					function(data) {
+						res.writeHead(200, {'Content-Type': 'text/html'});
+         				res.end(data); 	
+					}
+				);
+			}
+		});
+	}
+	// Se è stato deciso di selezionare un topic gia esistente
+	else {
+		// Cerco l'id massimo
+		questions_collection.find(function(err, questions) {
+			if (err) {
+				console.log(err);
+			}
+			else {
+				var max = 0;
+				// Per tutte le question
+				for (var i = 0; i < questions.length; i++) {
+					if (questions[i].topic = chosenTopic && questions[i].nId > max) {
+						max = questions[i].nId;
+					}
+				}
+				var newId = max + 1;
+				var domandaDatabase = new questions_collection();
+				domandaDatabase.topic = chosenTopic;
+				domandaDatabase.value = nuovaDomanda;
+				domandaDatabase.nId = newId;
+				domandaDatabase.screen = "";
+				domandaDatabase.answer = nuovaRisposta;
+				domandaDatabase.rating = "1";
+				domandaDatabase.save(function(err) {
+					if (err) {
+						console.log(err);
+					}
+					else {
+						bind.toFile('./personalArea.html', 
+							{
+
+							}, 
+							function(data) {
+								res.writeHead(200, {'Content-Type': 'text/html'});
+         						res.end(data); 	
+							}
+						);
+					}
+				});
+			}
+		});
+	}
 });
 
 
