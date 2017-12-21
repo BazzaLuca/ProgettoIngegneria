@@ -429,15 +429,16 @@ app.post('/addQuestion', function(req, res) {
 				var max = 0;
 				// Per tutte le question
 				for (var i = 0; i < questions.length; i++) {
-					if (questions[i].topic = chosenTopic && questions[i].nId > max) {
-						max = questions[i].nId;
+					if (questions[i].topic = chosenTopic && parseInt(questions[i].nId) > max) {
+						max = parseInt(questions[i].nId);
+						console.log(max);
 					}
 				}
 				var newId = max + 1;
 				var domandaDatabase = new questions_collection();
 				domandaDatabase.topic = chosenTopic;
 				domandaDatabase.value = nuovaDomanda;
-				domandaDatabase.nId = newId;
+				domandaDatabase.nId = newId.toString();
 				domandaDatabase.screen = "";
 				domandaDatabase.answer = nuovaRisposta;
 				domandaDatabase.rating = "1";
