@@ -386,6 +386,11 @@ app.get('/personalArea', function(req, res) {
 	);
 });
 
+app.post('/addQuestion', function(req, res) {
+	var nuovaDomanda = req.body.question;
+	console.log(nuovaDomanda);
+});
+
 
 app.listen((process.env.PORT || 8080));
 

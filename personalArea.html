@@ -67,12 +67,12 @@
 	<div class="choose"> 
 		<h2 class="subtitle"> INSERISCI UNA NUOVA DOMANDA </h2>
 
-		<form action="https:\\secret-coast-61131.herokuapp.com/addQuestion" method='get'>
+		<form action="https:\\secret-coast-61131.herokuapp.com/addQuestion" method='post'>
 			<div class="inline">
 				<p> SCEGLI IL TOPIC </p>
 			</div>
 			<div class="inline">
-				<select class="topics">
+				<select class="topics" name="topics">
 					(:
 						topics ~
 						<option value="[:topic:]"> [:topic:] </option>
@@ -87,8 +87,8 @@
 			</div>
 
 			<h2 class="subtitle"> TESTO DELLA DOMANDA </h2>
-			<textarea class="q" name="message" rows="15" cols="100" required="true"></textarea>
-			<input class="submit" type="submit" name="INSERISCI">
+			<textarea class="q" name="question" rows="15" cols="100" required="true"></textarea>
+			<input class="submit" type="submit" value="INSERISCI">
 		</form>
 	</div>
 
