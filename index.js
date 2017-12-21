@@ -467,6 +467,20 @@ app.post('/addQuestion', function(req, res) {
 });
 
 
+app.get('/logout', function(req, res) {
+	loggedIn = false;
+	bind.toFile('./home.html', 
+		{
+
+		},
+		function(data) {
+			res.writeHead(200, {'Content-Type': 'text/html'});
+         	res.end(data); 	
+		}
+	);
+});
+
+
 app.listen((process.env.PORT || 8080));
 
 
