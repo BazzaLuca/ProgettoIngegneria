@@ -469,7 +469,7 @@ app.post('/addQuestion', function(req, res) {
 
 app.get('/logout', function(req, res) {
 	loggedIn = false;
-	bind.toFile('./home.html', 
+	bind.toFile('./loginPage.html', 
 		{
 
 		},
