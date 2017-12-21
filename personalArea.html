@@ -51,6 +51,10 @@
 			height: 3em;
 			margin-bottom: 10px;
 		}
+		div.topics {
+			text-align: center;
+			margin : 5px;
+		}
 	</style>
 </head>
 <body>
@@ -105,14 +109,14 @@
 		<h2 class="subtitle"> MODIFICA O ELIMINA UNA DOMANDA ESISTENTE </h2>
 		<p class="modify"> SCEGLI IL TOPIC CONTENENTE LA DOMANDA DA MODIFICARE O ELIMINARE </p>
 
+		<div class="topics">
 		(:
 			topics ~
-			<div class="inline">
-				<form action="https:\\secret-coast-61131.herokuapp.com/[:topic:]" method='get'>
-					<input class="topics" type="submit" value="[:topic:]">
-				</form>
-			</div
+			<form action="https:\\secret-coast-61131.herokuapp.com/[:topic:]" method='get'>
+				<input class="topics" type="submit" value="[:topic:]">
+			</form>
 		:)
+		</div>
 
 	</div>
 
