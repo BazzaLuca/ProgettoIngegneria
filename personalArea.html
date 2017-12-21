@@ -72,10 +72,10 @@
 				<p> SCEGLI IL TOPIC </p>
 			</div>
 			<div class="inline">
-				<select class="topics" name="topics">
+				<select class="topics" name="dropdownTopics">
 					(:
 						topics ~
-						<option value="[:topic:]"> [:topic:] </option>
+						<option name=[:topic:] value="[:topic:]"> [:topic:] </option>
 					:)
 				</select>
 			</div>
