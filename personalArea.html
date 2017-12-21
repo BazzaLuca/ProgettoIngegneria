@@ -35,6 +35,19 @@
 		}
 		textarea.q {
 			margin-left: 20px;
+			width: 96%;
+		}
+		input.p {
+			width: 25em;
+			height: 2em;
+		}
+
+		input.submit {
+			width: 10em;
+			height: 4em;
+			margin-top: 10px;
+			margin-left: 20px;
+			margin-bottom: 10px;
 		}
 	</style>
 </head>
@@ -70,11 +83,12 @@
 				<p> oppure     AGGIUNGI UN NUOVO TOPIC </p>
 			</div>
 			<div class="inline">
-				<input type="text" name="newTopic">
+				<input class="p" type="text" name="newTopic">
 			</div>
 
 			<h2 class="subtitle"> TESTO DELLA DOMANDA </h2>
 			<textarea class="q" name="message" rows="15" cols="100" required="true"></textarea>
+			<input class="submit" type="submit" name="INSERISCI">
 		</form>
 	</div>
 
