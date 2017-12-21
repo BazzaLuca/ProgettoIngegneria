@@ -390,6 +390,7 @@ app.post('/addQuestion', function(req, res) {
 	var nuovaDomanda = req.body.question;
 	var chosenTopic = req.body.dropdownTopics;
 	console.log(nuovaDomanda);
+	console.log("CHOSEN TOPIC : " + chosenTopic);
 });
 
 
