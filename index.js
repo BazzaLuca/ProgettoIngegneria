@@ -347,6 +347,7 @@ app.post('/login', function(req, res) {
 			if (found == true) {
 				bind.toFile('./personalArea.html', 
 					{
+						topics : arrayTopics
 					},
 					function (data) {
        	  		  	    res.writeHead(200, {'Content-Type': 'text/html'});
@@ -376,7 +377,7 @@ app.post('/login', function(req, res) {
 app.get('/personalArea', function(req, res) {
 	bind.toFile('./personalArea.html', 
 		{
-
+			topics : arrayTopics
 		},
 		function (data) {
        	    res.writeHead(200, {'Content-Type': 'text/html'});
