@@ -595,7 +595,7 @@ app.get('/modify', function(req, res) {
 
 app.post('/modified', function(req, res) {
 	var topic = req.query.topic;
-	var nId = req.query.nId;
+	var nId = req.query.id;
 	console.log("TOPIC : " + topic);
 	console.log("NID : " + nId);
 });
