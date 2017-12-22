@@ -424,7 +424,11 @@ app.post('/addQuestion', function(req, res) {
 
 	// Se è stato deciso di aggiungere un nuovo topic
 	if (newTopic != "") {
-		console.log("ciao");
+		// devo raggiornare arrayTopics
+		arrayTopics.push({
+			topic : newTopic,
+			counter: "1"
+		});
 		var domandaDatabase = new questions_collection();
 		domandaDatabase.topic = newTopic;
 		domandaDatabase.value = nuovaDomanda;
@@ -460,8 +464,6 @@ app.post('/addQuestion', function(req, res) {
 				var max = 0;
 				// Per tutte le question
 				for (var i = 0; i < questions.length; i++) {
-					console.log("Questions[i].topic " + questions[i].topic + "  chosenTopic : " + chosenTopic);
-					console.log("question[i].nId :" + parseInt(questions[i].nId) + "max : " + max);
 					if (questions[i].topic == chosenTopic && parseInt(questions[i].nId) > max) {
 						max = parseInt(questions[i].nId);
 						console.log(max);
@@ -594,6 +596,8 @@ app.get('/modify', function(req, res) {
 });
 
 
+
+// Modifica la domana
 app.post('/modified', function(req, res) {
 	var topic = req.query.topic;
 	var nId = req.query.id;
@@ -650,6 +654,7 @@ app.post('/modified', function(req, res) {
 });
 
 
+// Elimina la domanda
 app.post('/delete', function(req, res) {
 	var topic = req.query.topic;
 	var nId = req.query.id;
