@@ -347,8 +347,7 @@ app.post('/login', function(req, res) {
 			if (found == true) {
 				bind.toFile('./personalArea.html', 
 					{
-						topics : arrayTopics,
-						clickedQuestion : false
+						topics : arrayTopics
 					},
 					function (data) {
        	  		  	    res.writeHead(200, {'Content-Type': 'text/html'});
@@ -378,7 +377,6 @@ app.post('/login', function(req, res) {
 app.get('/personalArea', function(req, res) {
 	bind.toFile('./personalArea.html', 
 		{
-			clickedQuestion : false,
 			topics : arrayTopics
 		},
 		function (data) {
@@ -411,8 +409,7 @@ app.post('/addQuestion', function(req, res) {
 			else {
 				bind.toFile('./personalArea.html', 
 					{
-						topics : arrayTopics,
-						clickedQuestion : false
+						topics : arrayTopics
 					}, 
 					function(data) {
 						res.writeHead(200, {'Content-Type': 'text/html'});
@@ -455,8 +452,7 @@ app.post('/addQuestion', function(req, res) {
 					else {
 						bind.toFile('./personalArea.html', 
 							{
-								topics : arrayTopics,
-								clickedQuestion : false
+								topics : arrayTopics
 							}, 
 							function(data) {
 								res.writeHead(200, {'Content-Type': 'text/html'});
@@ -538,13 +534,12 @@ app.get('/modify', function(req, res) {
 		var found = false;
 		while (found != true && i < questions.length) {
 			if (questions[i].nId == nId && questions[i].topic == topic) {
-				bind.toFile('./personalArea.html', 
+				// DA cambiare
+				bind.toFile('./modifyPage.html', 
 					{
-						topics : arrayTopics,
 						domanda : questions[i].value,
 						topic : questions[i].topic,
 						risposta : questions[i].answer,
-						clickedQuestion : true
 					},
 					function (data) {
            				res.writeHead(200, {'Content-Type': 'text/html'});

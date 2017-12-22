@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MODIFY QUESTION</title>
+	<meta charset="utf-8">
+	<style>
+		div.inline {
+			display: inline-block;
+			margin: 5px;
+		}
+		div.container {
+			display: flex;
+			align-items: center;
+		}
+		h1.subtitle {
+			margin: 5px;
+		}
+		a:link {
+			color: black;
+		}
+		a {
+			font-size: 24px;
+			text-decoration: none;
+		}
+		div.choose {
+			width: 96%;
+			border-style: solid;
+			border-width: 2px;
+			margin-left: 20px;
+			margin-top: 20px;
+		}
+		h2.subtitle {
+			margin-left: 10px;
+		}
+		textarea.q {
+			margin-left: 20px;
+			width: 96%;
+		}
+		input.submit {
+			width: 10em;
+			height: 4em;
+			margin-top: 10px;
+			margin-left: 20px;
+			margin-bottom: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="inline">
+			<a href="https:\\secret-coast-61131.herokuapp.com/">
+				<img src="https://www.biblioteca.unitn.it/sites/www.biblioteca.unitn.it/modules/asia_opengraphmeta/images/logo_fb.png" />
+			</a>
+		</div>
+
+		<div class="inline">
+			<h1> TOPIC : (:topic:) </h1>
+		</div>
+	</div>
+
+	<h1 class="subtitle"> MODIFICA IL TESTO DELLA DOMANDA E/O DELLA RISPOSTA </h1>
+	
+	<div class="choose"> 
+		<form action="https:\\secret-coast-61131.herokuapp.com/modified" method="post">
+			<h2 class="subtitle"> TESTO DELLA DOMANDA </h2>
+			<textarea class="q" name="question" rows="6" cols="100" required="true"> (:domanda:) </textarea>
+			<h2 class="subtitle"> TESTO DELLA RISPOSTA </h2>
+			<textarea class="q" name="answer" rows="6" cols="100" required="true"> (:risposta:) </textarea>
+			<input class="submit" type="submit" value="MODIFICA">
+		</form>
+
+
+	
+</body>
+</html>
