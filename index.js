@@ -677,12 +677,14 @@ app.post('/delete', function(req, res) {
 							console.log(err);
 						}
 						else {
+							// E qua devo togliere il topic dal l'array di topics se non ci sono piu cose dentro
 							question.remove(function(err) {
 								if (err) {
 									console.log(err);
 								}
 								else {
 									// da cambiare
+									// CONTROLLO QUA
 									console.log("deleted");
 									found = true;
 									bind.toFile('./personalArea.html', 
