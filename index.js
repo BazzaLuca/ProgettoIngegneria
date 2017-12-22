@@ -649,6 +649,57 @@ app.post('/modified', function(req, res) {
 	});
 });
 
+
+app.post('/delete', function(req, res) {
+	var topic = req.query.topic;
+	var nId = req.query.id;
+	// Prendo dal database la domanda che ha quelle caratteristiche
+	questions_collection.find(function(err, questions) {
+		if (err) {
+			console.log(questions);
+		}
+		else {
+			var i = 0;
+			var found = false;
+			while (found != true && i < questions.length) {
+				// Se ho trovato la domanda giusta
+				if (questions[i].topic == topic && questions[i].nId == nId) {
+					var realId = questions[i].id;
+
+					// Prendo la domanda e la elimino
+					questions_collection.findById(realId, function(err, question) {
+						if (err) {
+							console.log(err);
+						}
+						else {
+							question.save(function(err) {
+								if (err) {
+									console.log(err);
+								}
+								else {
+									// da cambiare
+									console.log("deleted");
+									found = true;
+									bind.toFile('./personalArea.html', 
+										{
+											topics : arrayTopics
+										},
+										function (data) {
+           									res.writeHead(200, {'Content-Type': 'text/html'});
+            								res.end(data);
+       									}
+									);
+								}
+							});
+						}
+					});
+				}
+				i = i + 1;
+			}
+		}
+	});
+});
+
 app.listen((process.env.PORT || 8080));
 
 
