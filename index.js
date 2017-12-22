@@ -347,7 +347,8 @@ app.post('/login', function(req, res) {
 			if (found == true) {
 				bind.toFile('./personalArea.html', 
 					{
-						topics : arrayTopics
+						topics : arrayTopics,
+						clickedQuestion : false
 					},
 					function (data) {
        	  		  	    res.writeHead(200, {'Content-Type': 'text/html'});
@@ -377,6 +378,7 @@ app.post('/login', function(req, res) {
 app.get('/personalArea', function(req, res) {
 	bind.toFile('./personalArea.html', 
 		{
+			clickedQuestion : false,
 			topics : arrayTopics
 		},
 		function (data) {
@@ -409,7 +411,7 @@ app.post('/addQuestion', function(req, res) {
 			else {
 				bind.toFile('./personalArea.html', 
 					{
-
+						clickedQuestion : false
 					}, 
 					function(data) {
 						res.writeHead(200, {'Content-Type': 'text/html'});
@@ -452,7 +454,7 @@ app.post('/addQuestion', function(req, res) {
 					else {
 						bind.toFile('./personalArea.html', 
 							{
-
+								clickedQuestion : false
 							}, 
 							function(data) {
 								res.writeHead(200, {'Content-Type': 'text/html'});
@@ -520,6 +522,39 @@ app.get('/modify/:topic', function(req, res) {
 		
 	});
 });
+
+app.get('/modify', function(req, res) {
+	var nId = req.query.id;
+	var topic = req.query.topic;
+
+	// Cerco la domanda nel database
+	questions_collection.find(function(err, questions) {
+		if (err) {
+			console.log(err);
+		}
+		var i = 0;
+		var found = false;
+		while (found != true && i < questions.length) {
+			if (questions[i].nId == nId && questions[i].topic == topic) {
+				bind.toFile('./personalArea.html', 
+					{
+						clickedQuestion : true,
+						domanda : questions[i].value,
+						topic : questions[i].topic,
+						risposta : questions[i].answer,
+					},
+					function (data) {
+           				res.writeHead(200, {'Content-Type': 'text/html'});
+            			res.end(data);
+       				}
+				);
+				found = true;
+			}
+			i = i + 1;
+		}
+
+	});
+})
 
 app.listen((process.env.PORT || 8080));
 
