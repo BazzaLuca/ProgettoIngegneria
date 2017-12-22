@@ -599,8 +599,6 @@ app.post('/modified', function(req, res) {
 	var nId = req.query.id;
 	var newQuestionValue = req.body.question;
 	var newAnswer = req.body.answer;
-	console.log("newQuestion : " + newQuestion);
-	console.log("newAnswer : " + newAnswer);
 
 	// Prendo dal database la domanda che ha quelle caratteristiche
 	questions_collection.find(function(err, questions) {
@@ -631,6 +629,15 @@ app.post('/modified', function(req, res) {
 									// da cambiare
 									console.log("updated");
 									found = true;
+									bind.toFile('/personalArea.html', 
+										{
+											topics : arrayTopics
+										},
+										function (data) {
+           									res.writeHead(200, {'Content-Type': 'text/html'});
+            								res.end(data);
+       									}
+									);
 								}
 							});
 						}
