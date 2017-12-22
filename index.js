@@ -593,6 +593,7 @@ app.get('/modify', function(req, res) {
 	});
 });
 
+
 app.post('/modified', function(req, res) {
 	var topic = req.query.topic;
 	var nId = req.query.id;
@@ -600,6 +601,25 @@ app.post('/modified', function(req, res) {
 	var newAnswer = req.body.answer;
 	console.log("newQuestion : " + newQuestion);
 	console.log("newAnswer : " + newAnswer);
+
+	// Prendo dal database la domanda che ha quelle caratteristiche
+	questions_collection.find(function(err, questions) {
+		if (err) {
+			console.log(questions);
+		}
+		else {
+			var i = 0;
+			var found = false;
+			while (found != true && i < questions.length) {
+				// Se ho trovato la domanda giusta
+				if (questions[i].topic == topic && questions[i].nId == nId) {
+					var realId = questions[i].id;
+					console.log("REAL ID : " + realId);
+				}
+				i = i + 1;
+			}
+		}
+	});
 });
 
 app.listen((process.env.PORT || 8080));
