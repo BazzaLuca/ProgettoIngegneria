@@ -596,8 +596,10 @@ app.get('/modify', function(req, res) {
 app.post('/modified', function(req, res) {
 	var topic = req.query.topic;
 	var nId = req.query.id;
-	console.log("TOPIC : " + topic);
-	console.log("NID : " + nId);
+	var newQuestion = req.body.question;
+	var newAnswer = req.body.answer;
+	console.log("newQuestion : " + newQuestion);
+	console.log("newAnswer : " + newAnswer);
 });
 
 app.listen((process.env.PORT || 8080));
