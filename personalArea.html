@@ -113,6 +113,7 @@
 		<h2 class="subtitle"> MODIFICA O ELIMINA UNA DOMANDA ESISTENTE </h2>
 		<p class="modify"> SCEGLI IL TOPIC CONTENENTE LA DOMANDA DA MODIFICARE O ELIMINARE </p>
 
+
 		<div class="topics">
 			(:
 				topics ~
@@ -121,6 +122,16 @@
 				</form>
 			:)
 		</div>
+
+		(: if[clickedQuestion] ~
+		    [:then ~ 
+		   		<form action=:"https:\\secret-coast-61131.herokuapp.com/modified]" method='post'>
+					<h2 class="subtitle"> TESTO DELLA DOMANDA DA MODIFICARE </h2>
+					<textarea class="q" name="modifiedQuestion" rows="6" cols="100" required="true"> (:domanda:) </textarea>
+		   		<form>
+
+		   	:]
+		:)
 	</div>
 
 </body>
