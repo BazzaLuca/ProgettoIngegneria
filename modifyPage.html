@@ -6,7 +6,7 @@
 	<style>
 		div.inline {
 			display: inline-block;
-			margin: 5px;
+			margin-left: 20px;
 		}
 		div.container {
 			display: flex;
@@ -43,6 +43,13 @@
 			margin-left: 20px;
 			margin-bottom: 15px;
 		}
+		input.submit2 {
+			width: 10em;
+			height: 4em;
+			margin-top: 10px;
+			margin-left: 20px;
+			margin-bottom: 10px;
+		}
 		p.modify {
 			margin-left: 20px;
 		}
@@ -60,11 +67,10 @@
 			<h1> TOPIC : (:topic:) </h1>
 		</div>
 	</div>
-
-	<h1 class="subtitle"> MODIFICA IL TESTO DELLA DOMANDA E/O DELLA RISPOSTA </h1>
 	
-	<div class="choose"> 
-		<form action="https:\\secret-coast-61131.herokuapp.com/modified" method="post">
+	<div class="choose">
+		<h2 class="subtitle"> MODIFICA IL TESTO DELLA DOMANDA E/O DELLA RISPOSTA </h2> 
+		<form action="https:\\secret-coast-61131.herokuapp.com/modified?id=(:nId:)&topic=(:topic:)" method="post">
 			<h2 class="subtitle"> TESTO DELLA DOMANDA </h2>
 			<textarea class="q" name="question" rows="6" cols="100" required="true">(:domanda:)</textarea>
 			<h2 class="subtitle"> TESTO DELLA RISPOSTA </h2>
@@ -73,13 +79,10 @@
 		</form>
 	</div>
 
-	<p class="modify"> OPPURE </p>
-
-	<h1 class="subtitle"> ELIMINA LA DOMANDA PRECEDENTEMENTE SELEZIONATA </h1>
 	<div class="choose">
+		<h2 class="subtitle"> ELIMINA LA DOMANDA PRECEDENTEMENTE SELEZIONATA </h2>
 		<form action="https:\\secret-coast-61131.herokuapp.com/delete" method="get">
-			<h2 class="subtitle"> PREMI SU ELIMINA PER ELIMINARE </h2>
-			<input class="submit" type="submit" value="ELIMINA">
+			<input class="submit2" type="submit" value="ELIMINA">
 		</form>
 </body>
 </html>

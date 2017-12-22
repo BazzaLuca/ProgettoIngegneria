@@ -38,6 +38,8 @@ app.use(bodyParser.json());
 // variabile per il logn
 var loggedIn = false;
 
+
+// Ordino i topic per farmeli mostrare in ordine sulla home
 questions_collection.find(function(err, questions) {
 	if (err) {
 		console.log(err);
@@ -92,6 +94,8 @@ questions_collection.find(function(err, questions) {
 
 
 //  Listen to '/' request praticamente quando starta su heroku
+// Quando parte heroku apre la home passandogli i topic precedentemente ordinati
+// e una variabile booleana che checka il login
 app.get('/', function(req, res) {
 
 	bind.toFile('./home.html', 
@@ -109,6 +113,9 @@ app.get('/', function(req, res) {
 
 
 
+// Passa la frase inserita all'agent che la matcha con un topic
+// Dopodichè cerca le domande con quel topic le ordina per rating 
+// apre la pagina search  e mostra le doande all'utente
 app.get('/question', function(req, res) {
 	var q = req.query.questionValue;
 	console.log("Q : " +  q);
@@ -169,6 +176,9 @@ app.get('/question', function(req, res) {
 });
 
 
+// Gestione dei bottoni sulla home
+// dalla search puoi cliccare su uno dei bottoni che vengono creati dinamicamente
+// per accedere alla stessa pagina che mostra le domande all'utente
 app.get('/search/:topic', function(req, res) {
 	var topicScelto = req.params.topic;
 	var arrayQuestions = [];
@@ -214,6 +224,11 @@ app.get('/search/:topic', function(req, res) {
 	// res.end(topicScelto);
 });
 
+
+// Dopo aver cliccato una domanda 
+// vengono ritornati il suo id e il suo topic
+// Cerco nel database la domanda con tali id e topic
+// e la mostro all'utente insieme alla sua risposta nella pagina answer.html
 app.get('/risposta', function(req, res) {
 	var nId = req.query.id;
 	var topic = req.query.topic;
@@ -252,6 +267,10 @@ app.get('/risposta', function(req, res) {
 
 });
 
+
+// una volta cliccato il bottone non hai trovato quello che stavi cercandi
+// Apre la pagina della segreteria
+// Sent è un parametro che serve all'utente per sapere se l'email è stata mandata con successo
 app.get('/segreteria', function(req, res) {
 	bind.toFile('./segreteria.html',
 		{
@@ -266,6 +285,8 @@ app.get('/segreteria', function(req, res) {
 
 
 // 20/12 invio riuscito
+// Route che invia l'email
+// Mette sent a true se tutto è andato come doveva andare
 app.post('/messaggio', function(req, res) {
 	var textMessage = req.body.message;
 	
@@ -304,6 +325,8 @@ app.post('/messaggio', function(req, res) {
 	});
 });
 
+// Una volta cliccato il bottone login dalla gome 
+// viene aprte la pagina loginPage.html
 app.get('/loginForm', function(req, res) {
 	bind.toFile('./loginPage.html', 
 		{
@@ -315,6 +338,9 @@ app.get('/loginForm', function(req, res) {
 	);
 });
 
+// Una volta cliccato login sulla form di login
+// controllo se l'utente esiste nel database quindi se l'utente è un segretario
+// E in caso lo rimando all'AREA PERSONALE dove puo gestire le domande
 app.post('/login', function(req, res) {
 	var username = req.body.username;
 	var password = req.body.password;
@@ -374,6 +400,8 @@ app.post('/login', function(req, res) {
 });
 
 
+// Se un utente loggato è nella home invece che il tasto login ci sarà un tasto Area Personale
+// Cliccandolo accederà direttamente alla sua area personale
 app.get('/personalArea', function(req, res) {
 	bind.toFile('./personalArea.html', 
 		{
@@ -386,6 +414,8 @@ app.get('/personalArea', function(req, res) {
 	);
 });
 
+// Nell'area personale ci sarà una form tramite la quale l'utente segreatrio potrò aggiungere nuove domande 
+// o nuovi topic
 app.post('/addQuestion', function(req, res) {
 	var nuovaDomanda = req.body.question;
 	var chosenTopic = req.body.dropdownTopics;
@@ -467,6 +497,7 @@ app.post('/addQuestion', function(req, res) {
 });
 
 
+// se l'utente amministratore preme logout setta la variabile loggein a falso
 app.get('/logout', function(req, res) {
 	loggedIn = false;
 	bind.toFile('./loginPage.html', 
@@ -480,6 +511,10 @@ app.get('/logout', function(req, res) {
 	);
 });
 
+
+
+// Una volta scelto il topic contenent la domanda da modificare l'utente segretario
+// Si troverà di fronte alle domande relative al topic 
 app.get('/modify/:topic', function(req, res) {
 	var topicScelto = req.params.topic;
 	var arrayQuestions = [];
@@ -521,6 +556,9 @@ app.get('/modify/:topic', function(req, res) {
 	});
 });
 
+
+// cliccando le domande si accederà alla pagina modifyPage.html
+// dove si potrà modificare o elimnare la domanda scelta
 app.get('/modify', function(req, res) {
 	var nId = req.query.id;
 	var topic = req.query.topic;
@@ -540,6 +578,7 @@ app.get('/modify', function(req, res) {
 						domanda : questions[i].value,
 						topic : questions[i].topic,
 						risposta : questions[i].answer,
+						nId : questions[i].nId
 					},
 					function (data) {
            				res.writeHead(200, {'Content-Type': 'text/html'});
@@ -552,6 +591,13 @@ app.get('/modify', function(req, res) {
 		}
 
 	});
+});
+
+app.post('/modified', function(req, res) {
+	var topic = req.query.topic;
+	var nId = req.query.nId;
+	console.log("TOPIC : " + topic);
+	console.log("NID : " + nId);
 });
 
 app.listen((process.env.PORT || 8080));
