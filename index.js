@@ -411,6 +411,7 @@ app.post('/addQuestion', function(req, res) {
 			else {
 				bind.toFile('./personalArea.html', 
 					{
+						topics : arrayTopics,
 						clickedQuestion : false
 					}, 
 					function(data) {
@@ -454,6 +455,7 @@ app.post('/addQuestion', function(req, res) {
 					else {
 						bind.toFile('./personalArea.html', 
 							{
+								topics : arrayTopics,
 								clickedQuestion : false
 							}, 
 							function(data) {
@@ -538,10 +540,11 @@ app.get('/modify', function(req, res) {
 			if (questions[i].nId == nId && questions[i].topic == topic) {
 				bind.toFile('./personalArea.html', 
 					{
-						clickedQuestion : true,
+						topics : arrayTopics,
 						domanda : questions[i].value,
 						topic : questions[i].topic,
 						risposta : questions[i].answer,
+						clickedQuestion : true
 					},
 					function (data) {
            				res.writeHead(200, {'Content-Type': 'text/html'});
