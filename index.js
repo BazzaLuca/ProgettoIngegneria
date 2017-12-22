@@ -597,7 +597,7 @@ app.get('/modify', function(req, res) {
 app.post('/modified', function(req, res) {
 	var topic = req.query.topic;
 	var nId = req.query.id;
-	var newQuestion = req.body.question;
+	var newQuestionValue = req.body.question;
 	var newAnswer = req.body.answer;
 	console.log("newQuestion : " + newQuestion);
 	console.log("newAnswer : " + newAnswer);
@@ -614,7 +614,27 @@ app.post('/modified', function(req, res) {
 				// Se ho trovato la domanda giusta
 				if (questions[i].topic == topic && questions[i].nId == nId) {
 					var realId = questions[i].id;
-					console.log("REAL ID : " + realId);
+
+					// Prendo la domanda e la modifico
+					questions_collection.findById(realId, function(err, question) {
+						if (err) {
+							console.log(err);
+						}
+						else {
+							question.value = newQuestionValue;
+							question.answer = newAnswer;
+							question.save(function(err) {
+								if (err) {
+									console.log(err);
+								}
+								else {
+									// da cambiare
+									console.log("updated");
+									found = true;
+								}
+							});
+						}
+					});
 				}
 				i = i + 1;
 			}
