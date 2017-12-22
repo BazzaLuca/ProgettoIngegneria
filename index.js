@@ -672,7 +672,7 @@ app.post('/delete', function(req, res) {
 							console.log(err);
 						}
 						else {
-							question.save(function(err) {
+							question.remove(function(err) {
 								if (err) {
 									console.log(err);
 								}
