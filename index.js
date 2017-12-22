@@ -482,7 +482,43 @@ app.get('/logout', function(req, res) {
 
 app.get('/modify/:topic', function(req, res) {
 	var topicScelto = req.params.topic;
-	console.log("clicked on " + topicScelto);
+	var arrayQuestions = [];
+	questions_collection.find(function(err, questions) {
+		if (err) {
+			console.log(err);
+		}
+		for (var i = 0; i < questions.length; i++) {
+			if (questions[i].topic == topicScelto) {
+				arrayQuestions.push(questions[i]);
+			}
+		}
+
+		// Ordino le questions
+		var f = arrayQuestions.length - 1;
+		for (var i = 0; i < arrayQuestions.length; i++) {
+			for (var c = 0; c < f; c++) {
+				if (arrayQuestions[c].rating < arrayQuestions[c+1].rating) {
+					var copia = arrayQuestions[c];
+					arrayQuestions[c] = arrayQuestions[c+1];
+					arrayQuestions[c+1] = copia;
+				}
+			} 
+			f = f - 1;
+		}
+
+		bind.toFile('./modify.html', 
+			{
+				domande : arrayQuestions,
+				topic : topicScelto
+			},
+			function (data) {
+           		res.writeHead(200, {'Content-Type': 'text/html'});
+            	res.end(data);
+       		}
+		);
+
+		
+	});
 });
 
 app.listen((process.env.PORT || 8080));
