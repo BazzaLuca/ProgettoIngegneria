@@ -43,6 +43,9 @@
 			margin-left: 20px;
 			margin-bottom: 15px;
 		}
+		p.modify {
+			margin-left: 20px;
+		}
 	</style>
 </head>
 <body>
@@ -68,8 +71,14 @@
 			<textarea class="q" name="answer" rows="6" cols="100" required="true"> (:risposta:) </textarea>
 			<input class="submit" type="submit" value="MODIFICA">
 		</form>
+	</div>
 
+	<p class="modify"> OPPURE </p>
 
-	
+	<div class="choose">
+		<form action="https:\\secret-coast-61131.herokuapp.com/delete" method="get">
+			<h2 class="subtitle"> ELIMINA LA DOMANDA PRECEDENTEMENTE SELEZIONATA </h2>
+			<input class="submit" type="submit" value="ELIMINA">
+		</form>
 </body>
 </html>
