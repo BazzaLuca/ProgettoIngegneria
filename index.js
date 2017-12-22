@@ -629,7 +629,7 @@ app.post('/modified', function(req, res) {
 									// da cambiare
 									console.log("updated");
 									found = true;
-									bind.toFile('/personalArea.html', 
+									bind.toFile('./personalArea.html', 
 										{
 											topics : arrayTopics
 										},
