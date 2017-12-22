@@ -480,6 +480,10 @@ app.get('/logout', function(req, res) {
 	);
 });
 
+app.get('/modify/:topic', function(req, res) {
+	var topicScelto = req.params.topic;
+	console.log("clicked on " + topicScelto);
+});
 
 app.listen((process.env.PORT || 8080));
 
