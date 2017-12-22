@@ -552,7 +552,7 @@ app.get('/modify', function(req, res) {
 		}
 
 	});
-})
+});
 
 app.listen((process.env.PORT || 8080));
 
